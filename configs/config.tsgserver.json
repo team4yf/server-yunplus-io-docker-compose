@@ -1,0 +1,14 @@
+{
+    "server":
+    {
+        "port": 9992
+    },
+    "mysql":
+    {
+        "host": "localhost",
+        "database": "taoshenggou",
+        "username": "dbadmin",
+        "password": "741235896",
+        "showSql": true
+    }
+}

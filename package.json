@@ -1,0 +1,14 @@
+{
+  "name": "yunplus-server-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down --remove-orphans",
+    "console:mqttserver": "docker logs -f fpm-mqtt-server"
+  },
+  "author": "",
+  "license": "ISC"
+}

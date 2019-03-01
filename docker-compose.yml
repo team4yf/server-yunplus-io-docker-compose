@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx:
+    restart: always
+    image: nginx:1.15-alpine
+    ports:
+      - 8080:80
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/nginx.default.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/log:/var/log/nginx
+      - ./nginx/www:/usr/share/nginx/html
+      # - /etc/letsencrypt:/etc/letsencrypt
+    # networks:
+    #   - host
+
+networks:
+  host:

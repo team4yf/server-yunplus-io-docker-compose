@@ -1,0 +1,8 @@
+{
+    "server":
+    {
+        "hostname": "0.0.0.0",
+        "domain": "localhost",
+        "port": 9003
+    }
+}
