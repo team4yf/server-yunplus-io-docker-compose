@@ -16,8 +16,45 @@ services:
       - ./nginx/letsencrypt:/etc/letsencrypt
     extra_hosts:
       - "myhost:192.168.1.116"
-    # networks:
-    #   - host
+    networks:
+      - yunplus-network
+
+  registry:
+    image: 'registry:2.1.1'
+    container_name: "registry"
+    ports:
+      - "5000:5000"
+    environment:
+      TZ: "Asia/Shanghai"
+    volumes:
+      - /opt/registry:/var/lib/registry
+    networks:
+      - yunplus-network
+    restart: always
+  mysql:
+    image: "mysql:5.6"
+    container_name: "fpm-mysql-server"
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/db_init.sql
+      - ./mysqldata/:/var/lib/mysql
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
+    networks:
+      - yunplus-network
+    restart: always
+
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin"
+    ports:
+      - "88:80"
+    depends_on:
+      - "mysql"
+    networks: 
+      - yunplus-network
+    restart: always
 
 networks:
-  host:
+  yunplus-network: 
