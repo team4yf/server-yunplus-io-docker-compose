@@ -14,7 +14,7 @@ echo '{
         "port": 9003
     }
 }
-' > config.json
+' > webhook.yunplus.io/config.json
 
 # the api.yunplus.io
 git clone git@github.com:team4yf/api.yunplus.io.git
@@ -65,7 +65,7 @@ echo '{
   "juheSms": {
     "appkey": "1a6c0e78e6ce02680e1d92b40181d3dc"
   }
-}' > config.json
+}' > api.yunplus.io/config.json
 
 
 # pm2 start
