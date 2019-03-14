@@ -71,3 +71,14 @@ echo '{
 # pm2 start
 cd webhook.yunplus.io && npm i && pm2 start app.js --name webhook.yunplus.io -i 1 && cd ..
 cd api.yunplus.io && npm i && pm2 start app.js --name api.yunplus.io -i 1 && cd ..
+
+
+
+# blog.yunplus.io
+git clone git@github.com:team4yf/blog.yunplus.io.source.git blog.yunplus.io
+git clone git@github.com:yfsoftcom/yf-hexo-theme-freemind.git blog.yunplus.io/themes/freemind
+
+git clone git@github.com:yfsoftcom/blogs-of-blog.yunplus.io.git blog.yunplus.io/source/
+
+cd blog.yunplus.io && npm i && pm2 start run.js --name blog.yunplus.io -i 1 && cd ..
+
