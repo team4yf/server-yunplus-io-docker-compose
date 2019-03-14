@@ -14,8 +14,10 @@ services:
       - ./nginx/log:/var/log/nginx
       - ./nginx/www:/usr/share/nginx/html
       - ./nginx/letsencrypt:/etc/letsencrypt
+    environment:
+      TZ: "Asia/Shanghai"
     extra_hosts:
-      - "myhost:192.168.1.116"
+      - "myhost:10.9.184.52"
     networks:
       - yunplus-network
 
@@ -31,7 +33,7 @@ services:
     networks:
       - yunplus-network
     restart: always
-  mysql:
+  db:
     image: "mysql:5.6"
     container_name: "fpm-mysql-server"
     volumes:
@@ -50,8 +52,10 @@ services:
     image: "phpmyadmin/phpmyadmin"
     ports:
       - "88:80"
+    environment:
+      TZ: "Asia/Shanghai"
     depends_on:
-      - "mysql"
+      - "db"
     networks: 
       - yunplus-network
     restart: always

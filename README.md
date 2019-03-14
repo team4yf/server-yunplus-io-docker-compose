@@ -24,6 +24,14 @@ IP
 - Lan: `10.9.184.52`
 - Wan: `106.75.67.85`
 
+
+## Server Dir 
+
+Nginx static html
+`/home/yf/projects/docker/server-yunplus-io-docker-compose/nginx/www`
+
+
+
 ## 相关资料
 
 #### About Nginx
