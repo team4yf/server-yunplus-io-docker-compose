@@ -1,18 +1,18 @@
 ## TODO List
 
-- [ ] 备份数据库
-- [ ] 备份nginx配置信息
-- [ ] 备份ssl证书
-- [ ] 保存项目代码的配置信息
-- [ ] 编排 docker 服务配置文件
+- [x] 备份数据库
+- [x] 备份nginx配置信息
+- [x] 备份ssl证书
+- [x] 保存项目代码的配置信息
+- [x] 编排 docker 服务配置文件
 - [ ] 编写安装脚本
-  - [ ] nvm -> nodejs
-  - [ ] pm2
-  - [ ] git 
-  - [ ] docker
-  - [ ] docker-compose
-- [ ] 还原数据库
-- [ ] restore the projects code & config.json
+  - [x] nvm -> nodejs
+  - [x] pm2
+  - [x] git 
+  - [x] docker
+  - [x] docker-compose
+- [x] 还原数据库
+- [x] restore the projects code & config.json
 
 ## SSH
 
