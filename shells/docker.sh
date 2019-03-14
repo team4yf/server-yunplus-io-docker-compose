@@ -1,30 +1,36 @@
 #! /bin/sh
 
-uname -r
+apt-get -y purge docker.io
+apt-get -y install apt-transport-https ca-certificates
 
-yum update
-
-yum remove docker docker-common docker-selinux docker-engine
-
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-yum list docker-ce --showduplicates | sort -r
-
-yum install -y docker-ce
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+apt-get update
+apt-get -y install docker-engine
 
 systemctl start docker
 
 systemctl enable docker
 
-docker version
+# verfiy the docker
+docker run hello-world
+
+# To stop Docker service, run:
+# systemctl stop docker
+
+
+# To restart Docker service, run:
+# systemctl restart docker
+
+
+# To check the status of Docker service, run:
+# systemctl status docker
+
+
+# To enable Docker service to autostart on system boot, run:
+# systemctl enable docker
 
 # install docker-compose
 
-# 4.安装docker-compse
 pip install docker-compose
-# 5.查看版本号
-docker-compose -version
-# 6.卸载
-# pip uninstall docker-compose
-# 7.安装指定版本
-# pip install docker-compose=1.23.1
+
+docker-compose --version

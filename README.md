@@ -18,6 +18,12 @@
 
 `ssh root@a.yunplus.io`
 
+## Server Config
+
+IP
+- Lan: `10.9.184.52`
+- Wan: `106.75.67.85`
+
 ## 相关资料
 
 #### About Nginx

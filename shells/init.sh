@@ -17,12 +17,24 @@ clear
 
 YF_HOME_DIR="/home/yf"
 
+set -ex && \
+  echo "export LC_ALL=C" >> ~/.bashrc && \
+  source ~/.bashrc && \
+  mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
+  echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" > /etc/apt/sources.list && \
+  echo "deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib" >> /etc/apt/sources.list && \
+  echo "deb https://apt.dockerproject.org/repo debian-jessie main" >> /etc/apt/sources.list && \
+  apt-get update && \
+  apt-get install --no-install-recommends --no-install-suggests -y \
+    gcc git lsof automake autoconf libtool make openssl \
+    libssl-dev libpcre3 libpcre3-dev zlib1g-dev
 
-# 0. install tool kits
-yum install -y gcc git lsof yum-utils device-mapper-persistent-data lvm2
+apt-get install -y python-pip
 
-# 1.安装python-pip
-yum -y install python-pip install epel-release
-
-# 3.升级python-pip
 pip install --upgrade pip
