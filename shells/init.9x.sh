@@ -37,6 +37,9 @@ set -ex && \
     automake autoconf libtool make openssl \
     libssl-dev libpcre3 libpcre3-dev zlib1g-dev
 
+# 中文乱麻
+apt-get install ttf-wqy-*
+
 apt-get install -y python-pip
 
 pip install --upgrade pip
