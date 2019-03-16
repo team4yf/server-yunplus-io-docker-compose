@@ -41,3 +41,9 @@ docker run hello-world
 pip install docker-compose
 
 docker-compose --version
+
+# get the private docker source
+echo '{
+  "registry-mirrors": [ "https://registry.docker-cn.com"],
+  "insecure-registries": [ "192.168.100.196:5000"]
+}' > /etc/docker/daemon.json
