@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# for debian 8x
+
 # Author: yfsoft
 # Version: 1.0.0
 # Date: 2019-03-14
