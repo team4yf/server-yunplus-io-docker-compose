@@ -81,7 +81,7 @@ services:
     container_name: "yunplus-io-mongo-admin"
     restart: always
     ports:
-      - 1234:1234
+      - 5234:1234
     environment:
       CONN_NAME: 'manager'
       DB_USERNAME: 'admin'
