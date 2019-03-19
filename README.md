@@ -42,3 +42,8 @@ git@github.com:yfsoftcom/webhook.yunplus.io.git
 #### About Nginx
 
 [https://github.com/nginxinc/docker-nginx/tree/7890fc2342613e6669ad83ceead9c81136d2cc0a/mainline/alpine](https://github.com/nginxinc/docker-nginx/tree/7890fc2342613e6669ad83ceead9c81136d2cc0a/mainline/alpine)
+
+
+## Mongo Admin Cant use
+
+TODO debug

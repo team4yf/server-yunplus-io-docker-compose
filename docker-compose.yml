@@ -75,23 +75,23 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 'admin'
     networks:
       - yunplus-network
-  manager:
-    # mongodb://admin:admin@mongo
-    image: 'mrvautin/adminmongo'
-    container_name: "yunplus-io-mongo-admin"
-    restart: always
-    ports:
-      - 5234:1234
-    environment:
-      CONN_NAME: 'manager'
-      DB_USERNAME: 'admin'
-      DB_PASSWORD: 'admin'
-      DB_HOST: 'mongo'
-      DB_PORT: 27017
-    depends_on:
-      - 'mongo'
-    networks:
-      - yunplus-network
+  # manager:
+  #   # mongodb://admin:admin@mongo
+  #   image: 'mrvautin/adminmongo'
+  #   container_name: "yunplus-io-mongo-admin"
+  #   restart: always
+  #   ports:
+  #     - 5234:1234
+  #   environment:
+  #     CONN_NAME: 'manager'
+  #     DB_USERNAME: 'admin'
+  #     DB_PASSWORD: 'admin'
+  #     DB_HOST: 'mongo'
+  #     DB_PORT: 27017
+  #   depends_on:
+  #     - 'mongo'
+  #   networks:
+  #     - yunplus-network
 
 networks:
   yunplus-network: 
