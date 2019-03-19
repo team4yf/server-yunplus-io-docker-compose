@@ -77,7 +77,7 @@ services:
       - yunplus-network
   manager:
     # mongodb://admin:admin@mongo
-    image: 'rainu/adminmongo'
+    image: 'mrvautin/adminmongo'
     container_name: "yunplus-io-mongo-admin"
     restart: always
     ports:
