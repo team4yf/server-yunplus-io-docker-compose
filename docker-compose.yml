@@ -60,5 +60,35 @@ services:
       - yunplus-network
     restart: always
 
+  mongo:
+    image: 'mongo:3.4.20'
+    container_name: 'mongo_server'
+    restart: always
+    volumes:
+      - ./backup/:/backup/
+    ports:
+      - 27017:27017  
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'admin'
+      MONGO_INITDB_ROOT_PASSWORD: 'admin'
+    networks:
+      - yunplus-network
+  manager:
+    # mongodb://admin:admin@mongo
+    image: 'mrvautin/adminmongo'
+    restart: always
+    ports:
+      - 1234:1234
+    environment:
+      CONN_NAME: 'manager'
+      DB_USERNAME: 'admin'
+      DB_PASSWORD: 'admin'
+      DB_HOST: 'mongo'
+      DB_PORT: 27017
+    depends_on:
+      - 'mongo'
+    networks:
+      - yunplus-network
+
 networks:
   yunplus-network: 
