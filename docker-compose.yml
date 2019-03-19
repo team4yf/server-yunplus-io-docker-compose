@@ -78,7 +78,7 @@ services:
     image: 'mrvautin/adminmongo'
     restart: always
     ports:
-      - 1234:1234
+      - 11234:1234
     environment:
       CONN_NAME: 'manager'
       DB_USERNAME: 'admin'
