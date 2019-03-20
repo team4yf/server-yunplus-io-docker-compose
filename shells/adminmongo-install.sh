@@ -16,5 +16,14 @@ echo '{
     }
 }' > config/app.json
 
+echo '{
+  "connections": {
+    "conn": {
+      "connection_options": {},
+      "connection_string": "mongodb://admin:admin@127.0.0.1:27017"
+    }
+  }
+  
+}' > config/config.json
 # run with pm2
 pm2 start app.js --name mongo.yunplus.io -i 1
