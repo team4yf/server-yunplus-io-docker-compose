@@ -36,9 +36,10 @@ set -ex && \
     gcc git lsof \
     automake autoconf libtool make openssl \
     libssl-dev libpcre3 libpcre3-dev zlib1g-dev
-
+# Fix the issue @ https://github.com/team4yf/server-yunplus-io-docker-compose/issues/1
+apt-get install -y --fix-missing apt-transport-https
 # 中文乱麻
-apt-get install ttf-wqy-*
+apt-get install -y ttf-wqy-*
 
 apt-get install -y python-pip
 
