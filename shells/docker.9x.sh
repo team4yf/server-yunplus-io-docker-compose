@@ -1,6 +1,7 @@
 #! /bin/sh
 
-sudo apt -y install ca-certificates curl gnupg2 software-properties-common && \
+# Do as root
+apt -y install ca-certificates curl gnupg2 software-properties-common && \
   apt -y purge docker.io && \
   curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | apt-key add - && \
   add-apt-repository \
@@ -22,11 +23,14 @@ sudo apt -y install ca-certificates curl gnupg2 software-properties-common && \
   systemctl enable docker && \
 
   # 建立docker组
-  groupadd docker && \
+  groupadd docker
+
+# Do as user
 
 # 将用户添加到docker组
-  usermod -aG docker $USER  && \
+  sudo usermod -aG docker $USER
 
+  newgrp docker
 # verfiy the docker
   docker run hello-world && \
 
@@ -48,7 +52,7 @@ sudo apt -y install ca-certificates curl gnupg2 software-properties-common && \
 
 # install docker-compose
 
-  pip3 install docker-compose && \
+  pip3 install docker-compose
 
   docker-compose --version
 

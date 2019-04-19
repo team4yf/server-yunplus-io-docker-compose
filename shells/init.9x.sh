@@ -20,7 +20,7 @@ YF_HOME_DIR="/home/yf"
 set -ex && \
   echo "export LC_ALL=C" >> ~/.bashrc && \
   source ~/.bashrc && \
-  mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
+  sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   echo "deb http://mirrors.163.com/debian/ stretch main non-free contrib" > /etc/apt/sources.list && \
   echo "deb http://mirrors.163.com/debian/ stretch-updates main non-free contrib" >> /etc/apt/sources.list && \
   echo "deb http://mirrors.163.com/debian/ stretch-backports main non-free contrib" >> /etc/apt/sources.list && \
@@ -29,15 +29,16 @@ set -ex && \
   echo "deb-src http://mirrors.163.com/debian/ stretch-backports main non-free contrib" >> /etc/apt/sources.list && \
   echo "deb http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib" >> /etc/apt/sources.list && \
   echo "deb-src http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib" >> /etc/apt/sources.list
+
+  
   # Fix the issue @ https://github.com/team4yf/server-yunplus-io-docker-compose/issues/1
-  apt-get install --fix-missing apt-transport-https && \
-  apt-get update && \
-  apt-get install --no-install-recommends --no-install-suggests -y \
-    gcc git lsof \
-    automake autoconf libtool make openssl \
-    libssl-dev libpcre3 libpcre3-dev zlib1g-dev
+  sudo apt-get install --fix-missing apt-transport-https && \
+    apt-get update && \
+    apt-get install --no-install-recommends --no-install-suggests -y \
+      gcc git lsof \
+      automake autoconf libtool make openssl \
+      libssl-dev libpcre3 libpcre3-dev zlib1g-dev \
+      python3-pip
 
 # 中文乱码
-apt-get install -y ttf-wqy-*
-
-apt-get install -y python3-pip
+# apt-get install -y ttf-wqy-*
