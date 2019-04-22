@@ -1,7 +1,5 @@
 #! /bin/sh
 
-cd /home/yf/projects/nodejs/
-
 git clone https://github.com/mrvautin/adminMongo.git && cd adminMongo
 
 npm i --production
@@ -27,3 +25,5 @@ echo '{
 }' > config/config.json
 # run with pm2
 pm2 start app.js --name mongo.yunplus.io -i 1
+
+echo 'open http://localhost:5234/dbApp  , then type:  741235896  for mangager '
