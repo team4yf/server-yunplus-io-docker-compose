@@ -12,6 +12,8 @@ deb-src http://mirrors.163.com/debian/ stretch-backports main non-free contrib
 deb http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib
 deb-src http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib' >> /etc/apt/sources.list
 
+apt update
+
 ##### stage2. 安装基本的工具
 apt install --fix-missing apt-transport-https && \
   apt-get update && \
@@ -19,7 +21,7 @@ apt install --fix-missing apt-transport-https && \
     gcc git lsof \
     automake autoconf libtool make openssl \
     libssl-dev libpcre3 libpcre3-dev zlib1g-dev \
-    python3-pip >
+    python3-pip
 
 ##### stage3. 下载 nvm，准备安装 nodejs
 git clone git://github.com/creationix/nvm.git ～
