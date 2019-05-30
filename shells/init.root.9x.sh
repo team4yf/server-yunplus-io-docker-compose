@@ -51,7 +51,7 @@ apt -y install ca-certificates curl gnupg2 software-properties-common && \
   systemctl enable docker
 
 ##### stage5. 安装 docker-compose
-pip3 install docker-compose
+pip install docker-compose
 
 
 ##### stage6. 生成 ssh key
