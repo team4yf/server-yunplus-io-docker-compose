@@ -24,8 +24,8 @@ apt install --fix-missing apt-transport-https && \
     python3-pip
 
 ##### stage3. 下载 nvm，准备安装 nodejs
-git clone git://github.com/creationix/nvm.git ～
-echo "source ～/nvm/nvm.sh" >> ~/.bashrc
+git clone git://github.com/creationix/nvm.git ~
+echo "source ~/nvm/nvm.sh" >> ~/.bashrc
 source ~/.bashrc
 
 ###### stage4. 安装 docker
@@ -55,7 +55,7 @@ pip install docker-compose
 
 
 ##### stage6. 生成 ssh key
-cd ～
+cd ~
 ssh-keygen -t rsa -b 4096 -C "yfsoftcom@126.com"
 eval "$(ssh-agent -s)"
 cat ~/.ssh/id_rsa.pub
