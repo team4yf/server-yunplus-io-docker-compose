@@ -28,6 +28,18 @@ git clone git://github.com/creationix/nvm.git ~
 echo "source ~/nvm/nvm.sh" >> ~/.bashrc
 source ~/.bashrc
 
+wget -O webhook.yunplus.tar.gz https://github.com/yfsoftcom/webhook.yunplus.io/archive/latest.tar.gz && \
+tar -xzvf webhook.yunplus.tar.gz && \
+mv webhook.yunplus.io* webhook.yunplus.io && \
+echo '{
+    "server":
+    {
+        "hostname": "0.0.0.0",
+        "domain": "localhost",
+        "port": 9003
+    }
+}' > webhook.yunplus.io/config.json
+
 ###### stage4. 安装 docker
 apt -y install ca-certificates curl gnupg2 software-properties-common && \
   apt -y purge docker.io && \
