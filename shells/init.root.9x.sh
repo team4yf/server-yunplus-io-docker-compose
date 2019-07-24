@@ -1,6 +1,10 @@
 #! /bin/sh
 # 针对通过 root 用户登录的 debian9 操作系统的初始化
 
+##### stage0.  创建 /home/yf 的目录
+if [ ! -d "/home/yf" ]; then
+  mkdir -p /home/yf
+fi
 ##### stage1. 设定 apt 源
 mv /etc/apt/sources.list /etc/apt/sources.list.bak && \
   echo 'deb http://mirrors.163.com/debian/ stretch main non-free contrib
@@ -24,8 +28,10 @@ apt install --fix-missing apt-transport-https && \
     python3-pip
 
 ##### stage3. 下载 nvm，准备安装 nodejs
-git clone git://github.com/creationix/nvm.git ~
-echo "source ~/nvm/nvm.sh" >> ~/.bashrc
+
+cd /home/yf
+git clone git://github.com/creationix/nvm.git 
+echo "source /home/yf/nvm/nvm.sh" >> ~/.bashrc
 source ~/.bashrc
 
 wget -O webhook.yunplus.tar.gz https://github.com/yfsoftcom/webhook.yunplus.io/archive/latest.tar.gz && \
@@ -63,7 +69,13 @@ apt -y install ca-certificates curl gnupg2 software-properties-common && \
   systemctl enable docker
 
 ##### stage5. 安装 docker-compose
-pip install docker-compose
+
+curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+# apt install python-pip
+
+# pip install docker-compose
 
 
 ##### stage6. 生成 ssh key
