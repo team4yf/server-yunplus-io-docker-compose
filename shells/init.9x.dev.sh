@@ -33,6 +33,7 @@ sudo apt -y install ca-certificates curl gnupg2 software-properties-common && \
   sudo apt-cache policy docker-ce && \
   sudo apt-get -y install docker-ce && \
 
+# ./init.9x.dev.sh: 36: ./init.9x.dev.sh: cannot create /etc/docker/daemon.json: Permission denied
   sudo echo '{
     "registry-mirrors": [ "https://registry.docker-cn.com"],
     "insecure-registries": [ ]
