@@ -1,36 +1,39 @@
 #! /bin/sh
+# 针对通过 普通 用户登录的 debian9 操作系统的初始化
+# 适用于开发的 PC
 
-apt-get -y purge docker.io
-apt-get -y install apt-transport-https ca-certificates
+##### stage2. 安装基本的工具
+sudo apt install --fix-missing apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt install --no-install-recommends --no-install-suggests -y \
+    gcc git lsof \
+    automake autoconf libtool make openssl \
+    libssl-dev libpcre3 libpcre3-dev zlib1g-dev 
+    
+###### stage4. 安装 docker
+sudo apt -y install ca-certificates curl gnupg2 software-properties-common && \
+  sudo apt -y purge docker.io && \
+  sudo curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/debian/gpg | sudo apt-key add - && \
+  sudo add-apt-repository \
+    "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian \
+    $(lsb_release -cs) \
+    stable" && \
 
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-apt-get update
-apt-get -y install docker-engine
+  sudo apt-get update && \
+  sudo apt-cache policy docker-ce && \
+  sudo apt-get -y install docker-ce && \
 
-systemctl start docker
+# ./init.9x.dev.sh: 36: ./init.9x.dev.sh: cannot create /etc/docker/daemon.json: Permission denied
+  sudo echo '{
+    "registry-mirrors": [ "https://registry.docker-cn.com"],
+    "insecure-registries": [ ]
+  }' > /etc/docker/daemon.json && \
 
-systemctl enable docker
+  sudo systemctl start docker && \
 
-# verfiy the docker
-docker run hello-world
+  sudo systemctl enable docker
 
-# To stop Docker service, run:
-# systemctl stop docker
+##### stage5. 安装 docker-compose
 
-
-# To restart Docker service, run:
-# systemctl restart docker
-
-
-# To check the status of Docker service, run:
-# systemctl status docker
-
-
-# To enable Docker service to autostart on system boot, run:
-# systemctl enable docker
-
-# install docker-compose
-
-pip install docker-compose
-
-docker-compose --version
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
