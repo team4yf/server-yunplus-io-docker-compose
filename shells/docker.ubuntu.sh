@@ -10,18 +10,12 @@ sudo apt-get install -y \
     software-properties-common
     
 ###### stage4. 安装 docker
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 
-sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
 
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-sudo apt-get update
-
-sudo apt-get install  -y  docker-ce docker-ce-cli containerd.io
+sudo apt-get -y update
+sudo apt-get -y install docker-ce
 
 
 # ./init.9x.dev.sh: 36: ./init.9x.dev.sh: cannot create /etc/docker/daemon.json: Permission denied
